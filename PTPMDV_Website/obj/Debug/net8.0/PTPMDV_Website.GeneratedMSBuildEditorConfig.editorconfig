@@ -1,0 +1,91 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = PTPMDV_Website
+build_property.RootNamespace = PTPMDV_Website
+build_property.ProjectDir = D:\HOC TAP\HOC KY 5\PTPM DV\Website\PTPMDV_Website\PTPMDV_Website\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\HOC TAP\HOC KY 5\PTPM DV\Website\PTPMDV_Website\PTPMDV_Website
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Moto/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Moto/ProducDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b1xQcm9kdWNEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Shared/Components/MenuMotoBrand/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWVudU1vdG9CcmFuZFxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Shared/Components/MenuMotoType/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWVudU1vdG9UeXBlXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Shared/_LayoutPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/User/DangKy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEYW5nS3kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/User/DangNhap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEYW5nTmhhcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/User/Show.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTaG93LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-0d04rz3xuw

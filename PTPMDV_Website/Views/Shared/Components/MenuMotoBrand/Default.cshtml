@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PTPMDV_Website.ViewModels.MenuMotoByBrandVM>
+
+<!-- Size Start -->
+<h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by brand</span></h5>
+<div class="bg-light p-4 mb-30">
+    <form>
+
+        
+        @{
+            int i = 0;
+            int id = 1;
+        }
+        @foreach (var moto in Model)
+        {
+            <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                <input type="checkbox" class="custom-control-input" id="size-@id" onclick="filterByBrand('@moto.brandId')">
+                <label class="custom-control-label" for="size-@id">@moto.brandName</label>
+                <span class="badge border font-weight-normal">@moto.amount</span>
+            </div>
+            id++;
+            i += moto.amount;
+        }
+        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+            <input type="checkbox" class="custom-control-input" checked id="size-all" onclick="filterByAllBrand()">
+            <label class="custom-control-label" for="size-all">All Brand</label>
+            <span class="badge border font-weight-normal">@i</span>
+        </div>
+    </form>
+</div>
+<!-- Size End -->
+<script>
+    function filterByBrand(brandId) {
+        // Lấy typeId hiện tại từ URL (nếu có)
+        const urlParams = new URLSearchParams(window.location.search);
+        const typeId = urlParams.get('typeId');
+
+        // Chuyển hướng tới controller Moto với tham số typeId
+        let url = '/Moto/Index?brandId=' + brandId;
+        if (typeId) {
+            url += "&typeId=" + typeId;
+        }
+        window.location.href = url;
+    }
+</script>
+
+<script>
+    function filterByAllBrand() {
+        // Giữ lại typeId (nếu có) khi chọn "All Brand"
+        const urlParams = new URLSearchParams(window.location.search);
+        const typeId = urlParams.get('typeId');
+
+        let newUrl = '/Moto';
+        if (typeId) {
+            newUrl += '?typeId=' + typeId;
+        }
+
+        window.location.href = newUrl;
+    }
+</script>

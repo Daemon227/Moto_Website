@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\BTL\\Website\\PTPMDV_Website\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\btl\\website\\ptpmdv_website\\ptpmdv_website\\views\\user\\dangnhap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\views\\user\\dangnhap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\btl\\website\\ptpmdv_website\\ptpmdv_website\\views\\user\\dangky.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\views\\user\\dangky.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\btl\\website\\ptpmdv_website\\ptpmdv_website\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\btl\\website\\ptpmdv_website\\ptpmdv_website\\controllers\\motocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\controllers\\motocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\btl\\website\\ptpmdv_website\\ptpmdv_website\\views\\moto\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\views\\moto\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DangKy.cshtml",
+              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\BTL\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\User\\DangKy.cshtml",
+              "RelativeDocumentMoniker": "PTPMDV_Website\\Views\\User\\DangKy.cshtml",
+              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\BTL\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\User\\DangKy.cshtml",
+              "RelativeToolTip": "PTPMDV_Website\\Views\\User\\DangKy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-04T13:35:13.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\BTL\\Website\\PTPMDV_Website\\PTPMDV_Website\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "PTPMDV_Website\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\BTL\\Website\\PTPMDV_Website\\PTPMDV_Website\\Controllers\\UserController.cs",
+              "RelativeToolTip": "PTPMDV_Website\\Controllers\\UserController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAiwBsAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T13:35:02.503Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DangNhap.cshtml",
+              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\BTL\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\User\\DangNhap.cshtml",
+              "RelativeDocumentMoniker": "PTPMDV_Website\\Views\\User\\DangNhap.cshtml",
+              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\BTL\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\User\\DangNhap.cshtml",
+              "RelativeToolTip": "PTPMDV_Website\\Views\\User\\DangNhap.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-04T13:34:24.088Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\BTL\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\Moto\\Index.cshtml",
+              "RelativeDocumentMoniker": "PTPMDV_Website\\Views\\Moto\\Index.cshtml",
+              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\BTL\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\Moto\\Index.cshtml",
+              "RelativeToolTip": "PTPMDV_Website\\Views\\Moto\\Index.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAABwAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-01T16:29:23.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MotoController.cs",
+              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\BTL\\Website\\PTPMDV_Website\\PTPMDV_Website\\Controllers\\MotoController.cs",
+              "RelativeDocumentMoniker": "PTPMDV_Website\\Controllers\\MotoController.cs",
+              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\BTL\\Website\\PTPMDV_Website\\PTPMDV_Website\\Controllers\\MotoController.cs",
+              "RelativeToolTip": "PTPMDV_Website\\Controllers\\MotoController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-01T01:53:51.274Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

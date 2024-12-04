@@ -1,0 +1,445 @@
+﻿@model PTPMDV_Website.ViewModels.MotoDetailVM;
+@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "ProducDetail";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<head>
+    <style>
+        /*dinh dang lại tieu de*/
+        .mb-3{
+            color: black;
+        }
+        .spec-item:nth-child(odd) {
+            background-color: #f8f9fa; /* Màu nền xám nhạt cho dòng lẻ */
+            color: black;
+        }
+
+        .spec-item:nth-child(even) {
+            background-color: #ffffff; /* Màu nền trắng cho dòng chẵn */
+            color: black;
+        }
+
+        /* Tô đậm cho các tiêu đề */
+        .spec-item-label {
+            font-weight: bold;
+        }
+
+        /*dành cho library*/
+        .motor-library-container_div {
+            padding: 20px; /* Khoảng cách bên trong */
+            background-color: #f8f9fa; /* Màu nền nhạt */
+        }
+
+        .row_moto_library {
+            display: flex; /* Sử dụng Flexbox để căn chỉnh */
+            flex-wrap: wrap; /* Cho phép bẻ dòng */
+            justify-content: center; /* Căn giữa các ảnh */
+            gap: 15px; /* Khoảng cách giữa các ảnh */
+        }
+
+        .moto_library_image {
+            flex: 0 1 400px; /* Chiều rộng tối thiểu là 400px, cho phép thu nhỏ */
+            max-width: 100%; /* Giới hạn chiều rộng tối đa */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng */
+            border-radius: 8px; /* Bo góc */
+            overflow: hidden; /* Ẩn phần dư */
+            transition: transform 0.3s; /* Hiệu ứng chuyển động khi hover */
+        }
+
+            .moto_library_image:hover {
+                transform: scale(1.05); /* Phóng to khi hover */
+            }
+
+        .image-moto-libary-item-box {
+            width: 100%; /* Chiếm toàn bộ chiều rộng của container */
+            position: relative; /* Để có thể căn chỉnh nội dung bên trong */
+        }
+
+        .list-moto-library-img {
+            width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của box */
+            height: auto; /* Giữ tỷ lệ khung hình */
+            border-radius: 8px; /* Bo góc cho ảnh */
+        }
+
+        .library-title {
+            text-align: center; /* Căn giữa tiêu đề */
+            color: #000000; /* Màu chữ đen */
+            background-color: #FFD700; /* Màu nền vàng */
+            font-size: 24px; /* Kích thước chữ */
+            margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+            font-weight: bold; /* Đậm chữ */
+            padding: 10px; /* Khoảng cách bên trong */
+            border-radius: 5px; /* Bo tròn góc */
+        }
+    </style>
+</head>
+
+<!-- Breadcrumb Start -->
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <nav class="breadcrumb bg-light mb-30">
+                <a class="breadcrumb-item text-dark" href="#">Home</a>
+                <a class="breadcrumb-item text-dark" href="#">Shop</a>
+                <span class="breadcrumb-item active">Shop Detail</span>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- Shop Detail Start -->
+<div class="container-fluid pb-5">
+    <div class="row px-xl-5">
+        
+        <div class="col-lg-5 mb-30"> 
+            <div id="product-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner bg-light" id="carousel-inner">
+                    <!-- Neu chua click chon phien ban mau thi anh ở đây sẽ là dạng ảnh mota -->
+                    @if (Model.MotoVersions != null && Model.MotoVersions.Any())
+                    {
+                        var isFirstImage = true;
+                        foreach (var version in Model.MotoVersions)
+                        {
+                            foreach (var versionColor in version.VersionColors)
+                            {
+                                foreach (var versionImg in versionColor.VersionImages)
+                                {
+                                    <div class="carousel-item @(isFirstImage ? "active" : "")">
+                                        <img class="w-100 h-100" src="~/img/AnhVersion/@versionImg.ImageUrl" alt="Image">
+                                    </div>
+                                    isFirstImage = false;
+                                }
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <!-- Nếu không có ảnh phiên bản, hiển thị ảnh mô tả mặc định -->
+                        <div class="carousel-item active">
+                            <img class="w-100 h-100" src="~/img/AnhVersion/025_Version_48_0.png" alt="Ảnh mô tả">
+                        </div>
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
+                    <i class="fa fa-2x fa-angle-left text-dark"></i>
+                </a>
+                <a class="carousel-control-next" href="#product-carousel" data-slide="next">
+                    <i class="fa fa-2x fa-angle-right text-dark"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-7 h-auto mb-30">
+            <div class="h-100 bg-light p-30">
+                <h3>@Model.TenXe</h3>
+                <div class="d-flex mb-3">
+                    <div class="text-primary mr-2">
+                        <small class="fas fa-star"></small>
+                        <small class="fas fa-star"></small>
+                        <small class="fas fa-star"></small>
+                        <small class="fas fa-star-half-alt"></small>
+                        <small class="far fa-star"></small>
+                    </div>
+                </div>
+                <h3 class="font-weight-semi-bold mb-4" id ="font-weight-semi-bold mb-4" >@Model.GiaBanMoTa VND</h3>
+                <p class="mb-4">
+                    @Model.ThietKe
+                </p>
+                @{
+                    string versionId = " ";
+                }
+                <div class="d-flex mb-3">
+                    <strong class="text-dark mr-3">Phiên Bản:</strong>
+                    <form>                      
+                        @{
+                            int index = 1;
+                        }
+                        @foreach (var version in Model.MotoVersions)
+                        {
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="size-@index" name="size" value="@version.MaVersion"  @(index ==1? "checked":"") onclick="updateVersion(this.value)">
+                                <label class="custom-control-label" for="size-@index">@version.TenVersion</label>
+                            </div>
+                            if (index == 1)
+                            {
+                                versionId = version.MaVersion;
+                            }
+                            index++;
+                            
+                        }
+                    </form>
+                </div>
+                <div class="d-flex mb-4">
+                    <strong class="text-dark mr-3">Màu Sắc:</strong>
+                    <div id="color-container">
+                        <form>
+
+                            @foreach (var version in Model.MotoVersions)
+                            {
+                                if (version.MaVersion.Equals(versionId))
+                                {
+                                    int i = 1;
+                                    foreach (var versionColor in version.VersionColors)
+                                    {
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" class="custom-control-input" id="color-@i" name="color" value="@versionColor.MaVersionColor" @(i==1 ? "checked":"") onclick="updateColor(this.value)">
+                                            <label class="custom-control-label" for="color-@i">@versionColor.TenMau</label>
+                                        </div>
+                                        i++;
+                                    }
+                                }
+
+                            }
+                        </form>
+
+                    </div>
+                </div>
+                
+                <div class="d-flex pt-2">
+                    <strong class="text-dark mr-2">Share on:</strong>
+                    <div class="d-inline-flex">
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="text-dark px-2" href="">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row px-xl-5">
+        <div class="col">
+            <div class="bg-light p-30">
+                <div class="nav nav-tabs mb-4">
+                    <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Tính Năng Nổi Bật</a>
+                    <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Thông Số Kỹ Thuật</a>
+                    <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Tiện Ích</a>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="tab-pane-1">
+                        <h4 class="mb-3">Tính Năng Nổi Bật</h4>
+                        <p>@Model.TinhNangNoiBat</p>
+                    </div>
+                    <div class="tab-pane fade" id="tab-pane-2">
+                        <h4 class="mb-3">Thông Số Kỹ Thuật</h4>
+                        <div class="col-12 spec-inner">
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Khối lượng xe</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.TrongLuong</p></div>
+                            </div>
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Dài x Rộng x Cao</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.KichThuoc</p></div>
+                            </div>
+                            <div class="row justify-content-center spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Khoảng cách trục bánh xe</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.KhoangCachTrucBanhXe</p></div>
+                            </div>
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Độ cao yên</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.DoCaoYen</p></div>
+                            </div>
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Độ cao gầm xe</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.DoCaoGamXe</p></div>
+                            </div>
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Dung tích bình xăng</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.DungTichBinhXang</p></div>
+                            </div>
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Kích cỡ lốp trước/ sau</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.KichCoLop</p></div>
+                            </div>
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Phuộc trước</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.PhuocTruoc</p></div>
+                            </div>
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Phuộc sau</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.PhuocSau</p></div>
+                            </div>
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Loại động cơ</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.LoaiDongCo</p></div>
+                            </div>
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Công suất tối đa</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.CongSuatToiDa</p></div>
+                            </div>  
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Mức tiêu thụ nhiên liệu</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.MucTieuThuNhienLieu</p></div>
+                            </div> 
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Hệ thống khởi động</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.HeThongKhoiDong</p></div>
+                            </div>
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Moment cực đại</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.MomentCucDai</p></div>
+                            </div>
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Dung tích xy-lanh</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.DungTichXyLanh</p></div>
+                            </div>
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Đường kính x Hành trình pít tông</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.DuongKinhHanhTrinhPittong</p></div>
+                            </div>
+                            <div class="row spec-item">
+                                <div class="col-6 col-lg-5 spec-item-label">Tỷ số nén</div>
+                                <div class="col-6 col-lg-7 spec-item-value"><p>@Model.TySoNen</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tab-pane-3">
+                        <h4 class="mb-3">Tiện Ích</h4>
+                        <p>@Model.TienIch</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var versionId = @Html.Raw(Json.Serialize(Model.MotoVersions.First().MaVersion));
+        var versionColorId = @Html.Raw(Json.Serialize(Model.MotoVersions.First().VersionColors.First().MaVersionColor));
+        function updateVersion(selectedVersion) {
+            versionId = selectedVersion; // Cập nhật versionId
+            updateListColor();
+            updateCarousel(); // Cập nhật carousel với hình ảnh mới
+        }
+
+        function updateColor(selectedColor) {
+            versionColorId = selectedColor; // Cập nhật colorVersionID
+            updateCarousel(); // Cập nhật carousel với hình ảnh mới
+        }
+
+        function updateListColor() {
+            var colorContainer = document.querySelector('#color-container form');
+            colorContainer.innerHTML = ''; // Xóa các nút radio cũ
+
+            var motoVersions = @Html.Raw(Json.Serialize(Model.MotoVersions));
+            var index = 1;
+
+            for (var version of motoVersions) {
+                if (version.maVersion === versionId) { // Tìm phiên bản được chọn
+                    for (var color of version.versionColors) {
+                        var colorDiv = document.createElement('div');
+                        colorDiv.className = 'custom-control custom-radio custom-control-inline';
+
+                        var colorInput = document.createElement('input');
+                        colorInput.type = 'radio';
+                        colorInput.className = 'custom-control-input';
+                        colorInput.id = 'color-' + index;
+                        colorInput.name = 'color';
+                        colorInput.value = color.maVersionColor;
+                        colorInput.onclick = function () { updateColor(this.value); };
+
+                        if (index === 1) {
+                            colorInput.checked = true;
+                            versionColorId = color.maVersionColor; // Gán giá trị màu đầu tiên làm mặc định
+                        }
+
+                        var colorLabel = document.createElement('label');
+                        colorLabel.className = 'custom-control-label';
+                        colorLabel.htmlFor = 'color-' + index;
+                        colorLabel.innerText = color.tenMau;
+
+                        colorDiv.appendChild(colorInput);
+                        colorDiv.appendChild(colorLabel);
+                        colorContainer.appendChild(colorDiv);
+
+                        index++;
+                    }
+                    documeny.getElementById("#font-weight-semi-bold mb-4").textContent =version.giaBanVersion;
+                    break; // Thoát khỏi vòng lặp sau khi tìm được phiên bản
+                }
+            }
+            
+            
+        }
+
+        // ve viet lai cho nay
+        function updatePrice()
+        {  
+            
+            
+        }
+
+        function updateCarousel() {
+            var carouselInner = document.querySelector('#product-carousel .carousel-inner');
+            carouselInner.innerHTML = ''; // Xóa các item hiện tại
+
+            // Duyệt qua các MotoVersions để tìm hình ảnh
+            var motoVersions = @Html.Raw(Json.Serialize(Model.MotoVersions)); // Chuyển Model sang JSON
+            var imgPath = "@Url.Content("~/img/AnhVersion/")";
+            var isFirstImage = true;
+            
+            /*for (var v of motoVersions){
+                console.log(v);
+            }*/
+
+            for (var version of motoVersions){
+                if(version.maVersion === versionId){
+                    for (var color of version.versionColors){
+                        if(color.maVersionColor === versionColorId){
+                            for(var img of color.versionImages){
+                                console.log(img.imageUrl);
+                                var url = img.imageUrl;
+                                var item = document.createElement('div');
+                                item.className = 'carousel-item ' + (isFirstImage ? 'active' : ''); // Thiết lập lớp cho item
+                                var img = document.createElement('img'); // Tạo phần tử img
+                                img.className = 'w-100 h-100'; // Thiết lập lớp cho img
+                                img.src = imgPath + url; // Đường dẫn đến ảnh
+                                img.alt = 'Image'; // Thiết lập alt cho img
+                                item.appendChild(img); // Thêm img vào item
+                                carouselInner.appendChild(item); // Thêm item vào carouselInner
+                                isFirstImage = false; // Đánh dấu rằng đã có ít nhất một ảnh
+                            }
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+
+            
+        }
+
+    </script>
+</div>
+<!-- Shop Detail End -->
+<!-- Library Start -->
+<h4 class="library-title">Thư Viện Ảnh</h4>
+<div class="motor-library-container_div">
+    <div class="row_moto_library">
+        @if (Model.MaLibraryNavigation != null && Model.MaLibraryNavigation.LibraryImages.Any())
+        {
+            @foreach (var libraryImg in Model.MaLibraryNavigation.LibraryImages)
+            {
+                <div class="moto_library_image" data-index="0">
+                    <div class="image-moto-libary-item-box">
+                        <img class="list-moto-library-img" src="~/img/LibraryImgs/@libraryImg.ImageUrl" alt="Library Image Moto Div">
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+<!-- Library End -->
+
+<a href="#" class="btn btn-primary back-to-top" style="display: inline;"><i class="fa fa-angle-double-up"></i></a>

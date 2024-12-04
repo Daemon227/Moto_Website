@@ -1,0 +1,21 @@
+﻿@model IEnumerable<PTPMDV_Website.Data.User>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Show</title>
+</head>
+<body>
+    @foreach(var u in Model)
+    {
+       <p>@u.UserId</p>
+       <p>@u.Username</p>
+       <p>@u.Password</p>
+    }
+</body>
+</html>

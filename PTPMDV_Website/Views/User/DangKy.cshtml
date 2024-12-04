@@ -1,0 +1,92 @@
+﻿@model PTPMDV_Website.ViewModels.RegisterVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Đăng ký</title>
+    <style>
+        body {
+            background-color: #f8f9fa; /* Màu nền sáng */
+            font-family: Arial, sans-serif; /* Phong chữ */
+            color: #333; /* Màu chữ chính */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Chiều cao toàn màn hình */
+            margin: 0; /* Bỏ margin mặc định */
+        }
+
+        .form-container {
+            background-color: #ffcc00; /* Màu vàng nhẹ hơn */
+            border: 2px solid #333; /* Đường viền màu đen */
+            padding: 20px; /* Khoảng cách bên trong */
+            border-radius: 8px; /* Bo góc */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+            max-width: 400px; /* Chiều rộng tối đa */
+            width: 100%; /* Chiều rộng 100% */
+            box-sizing: border-box; /* Để padding không làm tăng kích thước tổng thể */
+        }
+
+        .form-title {
+            text-align: center; /* Căn giữa tiêu đề */
+            margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+        }
+
+        .form-label {
+            margin-top: 10px; /* Khoảng cách trên nhãn */
+            display: block; /* Hiển thị nhãn dưới dạng khối */
+            font-weight: bold; /* Tô đậm chữ */
+        }
+
+        .form-input {
+            width: 100%; /* Chiều rộng 100% */
+            padding: 10px; /* Khoảng cách bên trong */
+            margin: 10px 0; /* Khoảng cách bên ngoài */
+            border: 1px solid #ccc; /* Đường viền màu xám */
+            border-radius: 4px; /* Bo góc */
+            box-sizing: border-box; /* Để padding không làm tăng kích thước tổng thể */
+        }
+
+        .form-button {
+            background-color: #333; /* Màu nền nút */
+            color: #fff; /* Màu chữ nút */
+            padding: 10px 15px; /* Khoảng cách bên trong */
+            border: none; /* Không có đường viền */
+            border-radius: 4px; /* Bo góc */
+            cursor: pointer; /* Hiệu ứng con trỏ */
+            width: 100%; /* Chiều rộng 100% */
+            font-weight: bold; /* Tô đậm chữ nút */
+            transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền khi hover */
+        }
+
+            .form-button:hover {
+                background-color: #555; /* Màu nền khi hover */
+            }
+
+    </style>
+</head>
+
+<body>
+    
+    <div class="form-container">
+        <form class="register-form" asp-controller="User" asp-action="DangKy">
+            <h2 class="form-title">Đăng ký tài khoản</h2>
+            <label asp-for="@Model.Username" class="form-label"></label>
+            <input asp-for="@Model.Username" class="form-input" required>
+
+            <label asp-for="@Model.Password" class="form-label"></label>
+            <input type="password" asp-for="@Model.Password" class="form-input" required>
+
+            <label for="confirm-password" class="form-label">Xác nhận mật khẩu:</label>
+            <input type="password" id="confirm-password" name="confirm-password" class="form-input" required>
+
+            <button type="submit" class="form-button">Đăng ký</button>
+        </form>
+    </div>
+</body>
+</html>
