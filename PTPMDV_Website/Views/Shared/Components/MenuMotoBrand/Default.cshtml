@@ -1,11 +1,8 @@
 ﻿@model IEnumerable<PTPMDV_Website.ViewModels.MenuMotoByBrandVM>
 
-<!-- Size Start -->
-<h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by brand</span></h5>
+<h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Lọc Theo Hãng Sản Xuất</span></h5>
 <div class="bg-light p-4 mb-30">
     <form>
-
-        
         @{
             int i = 0;
             int id = 1;
@@ -13,47 +10,44 @@
         @foreach (var moto in Model)
         {
             <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                <input type="checkbox" class="custom-control-input" id="size-@id" onclick="filterByBrand('@moto.brandId')">
-                <label class="custom-control-label" for="size-@id">@moto.brandName</label>
+                <input type="checkbox" class="custom-control-input" id="brand-@id" value="@moto.brandId" onclick="filterByBrand('@moto.brandId')">
+                <label class="custom-control-label" for="brand-@id">@moto.brandName</label>
                 <span class="badge border font-weight-normal">@moto.amount</span>
             </div>
             id++;
             i += moto.amount;
         }
         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-            <input type="checkbox" class="custom-control-input" checked id="size-all" onclick="filterByAllBrand()">
-            <label class="custom-control-label" for="size-all">All Brand</label>
+            <input type="checkbox" class="custom-control-input" id="brand-all" value="all" onclick="filterByAllBrand()">
+            <label class="custom-control-label" for="brand-all">Tất Cả Hãng</label>
             <span class="badge border font-weight-normal">@i</span>
         </div>
     </form>
 </div>
-<!-- Size End -->
+
 <script>
     function filterByBrand(brandId) {
-        // Lấy typeId hiện tại từ URL (nếu có)
         const urlParams = new URLSearchParams(window.location.search);
-        const typeId = urlParams.get('typeId');
-
-        // Chuyển hướng tới controller Moto với tham số typeId
-        let url = '/Moto/Index?brandId=' + brandId;
-        if (typeId) {
-            url += "&typeId=" + typeId;
-        }
-        window.location.href = url;
+        urlParams.set('brandId', brandId);
+        window.location.search = urlParams.toString();
     }
-</script>
 
-<script>
     function filterByAllBrand() {
-        // Giữ lại typeId (nếu có) khi chọn "All Brand"
         const urlParams = new URLSearchParams(window.location.search);
-        const typeId = urlParams.get('typeId');
-
-        let newUrl = '/Moto';
-        if (typeId) {
-            newUrl += '?typeId=' + typeId;
-        }
-
-        window.location.href = newUrl;
+        urlParams.delete('brandId');
+        window.location.search = urlParams.toString();
     }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedBrandId = urlParams.get('brandId');
+        if (selectedBrandId) {
+            const brandCheckbox = document.querySelector(`input[type="checkbox"][value="${selectedBrandId}"]`);
+            if (brandCheckbox) {
+                brandCheckbox.checked = true;
+            }
+        } else {
+            document.querySelector('#brand-all').checked = true;
+        }
+    });
 </script>

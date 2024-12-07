@@ -34,12 +34,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Moto/CompareMotos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b1xDb21wYXJlTW90b3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Moto/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Moto/ProducDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b1xQcm9kdWNEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Moto/ShowResult.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW90b1xTaG93UmVzdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HOC TAP/HOC KY 5/PTPM DV/Website/PTPMDV_Website/PTPMDV_Website/Views/Shared/Components/MenuMotoBrand/Default.cshtml]

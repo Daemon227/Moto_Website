@@ -1,0 +1,485 @@
+﻿
+@model PTPMDV_Website.ViewModels.CompareDataVM
+@{
+    ViewData["Title"] = "ShowResult";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h3 class="text-primary mb-4">SO SÁNH SẢN PHẨM</h3>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        @{
+            int i = 1;
+        }
+        @foreach (var selectedMoto in Model.MotoToCompare)
+        {
+            <div class="col-12 col-sm-6 col-md-4 mb-3">
+                <div class="card h-100 shadow-sm border-0 rounded">
+                    <div class="card-body text-center">
+                        <div class="thumb mb-3 border border-warning rounded" style="height: 200px; display: flex; align-items: center; 
+                            justify-content: center;"> 
+                            <img class="img-fluid" src="~/img/MoTa/@selectedMoto.AnhMoTaUrl" alt="Image placeholder" 
+                            style="max-height: 100%; max-width: 100%;"> 
+                        </div>
+                        <button type="button" class="btn btn-warning w-100" data-toggle="modal"
+                                data-target="#selectMotoModal" data-index="@i"
+                                onclick="changeTaget(this)">
+                            Đổi Xe <i class="fa fa-motorcycle ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            i++;
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-bordered compare-table">
+                    <thead class="thead-light">
+                        <tr class="text-center">
+                            <th>Thông Tin</th>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <th>@selectedMoto.TenXe</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @{
+                                int idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Giá Bán</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="gia_@idIndex text-center">@selectedMoto.GiaBanMoTa</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Trọng Lượng</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="trongluong_@idIndex text-center">@selectedMoto.TrongLuong</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Kích Thước</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="kichThuoc_@idIndex text-center">@selectedMoto.KichThuoc</td>
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Khoảng Cách Trục Bánh Xe</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="khoangCachTrucBanhXe_@idIndex text-center">@selectedMoto.KhoangCachTrucBanhXe</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Độ Cao Yên Xe</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="doCaoYen_@idIndex text-center">@selectedMoto.DoCaoYen</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Độ Cao Gầm Xe</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="doCaoGamXe_@idIndex text-center">@selectedMoto.DoCaoGamXe</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Dung Tích Bình Xăng</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="dungTichBinhXang_@idIndex text-center">@selectedMoto.DungTichBinhXang</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Kích Cỡ Lốp</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="kichCoLop_@idIndex text-center">@selectedMoto.KichCoLop</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Phuộc Trước</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="phuocTruoc_@idIndex text-center">@selectedMoto.PhuocTruoc</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Phuộc Sau</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="phuocSau_@idIndex text-center">@selectedMoto.PhuocSau</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Loại Động Cơ</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {                               
+                                <td class="loaiDongCo_@idIndex text-center">@selectedMoto.LoaiDongCo</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Công Suất Tối Đa</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="congSuatToiDa_@idIndex text-center">@selectedMoto.CongSuatToiDa</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Mức Tiêu Thụ Nhiên Liệu</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="mucTieuThuNhienLieu_@idIndex text-center">@selectedMoto.MucTieuThuNhienLieu</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Hệ Thống Khởi Động</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="heThongKhoiDong_@idIndex text-center">@selectedMoto.HeThongKhoiDong</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Moment Cực Đại</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="momentCucDai_@idIndex text-center">@selectedMoto.MomentCucDai</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Dung Tích Xy Lanh</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="dungTichXyLanh_@idIndex text-center">@selectedMoto.DungTichXyLanh</td>
+                                idIndex++;
+                            }
+                        </tr>
+                        <tr>
+                            @{
+                                idIndex = 0;
+                            }
+                            <td class="text-center font-weight-bold">Đường Kính-Hành Trình Pittong</td>
+                            @foreach (var selectedMoto in Model.MotoToCompare)
+                            {
+                                <td class="duongKinhPittong_@idIndex text-center">@selectedMoto.DuongKinhHanhTrinhPittong</td>
+                                idIndex++;
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="selectMotoModal" tabindex="-1" role="dialog" aria-labelledby="selectMotoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="selectMotoModalLabel">Chọn Xe</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="moto-list">
+                    @foreach (var moto in Model.Motos)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+                            <div class="product-item bg-light">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="~/img/Mota/@moto.AnhMoTaUrl" alt="@moto.TenXe">
+                                    <div class="product-action">
+                                        <button class="btn btn-primary select-moto"
+                                                data-moto-id="@moto.MaXe"
+                                                data-dismiss="modal"
+                                                onclick="ChooseMoto(this)">
+                                            Chọn xe
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="text-center py-2">
+                                    <h6>@moto.TenXe</h6>
+                                    <p>@moto.GiaBanMoTa VNĐ</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS -->
+<style>
+    body {
+        background-color: #fff; /* Nền trắng */
+        color: #000; /* Chữ đen */
+    }
+
+    .title-highlight {
+        color: #ffc107; /* Vàng đậm */
+        font-weight: bold;
+    }
+
+    .compare-thumbnail img {
+        max-width: 100%;
+        height: auto;
+        border: 2px solid #ffc107; /* Viền vàng */
+        border-radius: 10px;
+    }
+
+        .compare-thumbnail img.uniform-size {
+            width: 100%;
+            height: 200px; /* Cố định chiều cao cho tất cả các hình ảnh */
+            object-fit: cover; /* Giữ tỷ lệ hình ảnh mà không bị bóp méo */
+        }
+
+    .compare-table {
+        border: 1px solid #000; /* Viền bảng đen */
+        font-size: 0.9rem; /* Giảm kích thước font chữ */
+    }
+
+        .compare-table th, .compare-table td {
+            padding: 12px; /* Giảm padding */
+            text-align: center;
+            vertical-align: middle;
+        }
+
+    .table-highlight {
+        background-color: #ffc107; /* Nền vàng */
+        color: #000; /* Chữ đen */
+        font-weight: bold;
+    }
+
+    .table th, .table td {
+        width: 12%; /* Giảm độ rộng của các cột */
+    }
+
+    button.btn-warning {
+        background-color: #FFC107; /* Màu vàng */
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+        button.btn-warning:hover {
+            background-color: #FFB300; /* Màu vàng đậm khi hover */
+        }
+</style>
+
+<script>
+    var maXe = [];
+    var selectedButtonID = null;
+    function changeTaget(button) {
+        const buttonId = button.getAttribute("data-index");
+        selectedButtonID = buttonId;
+        //console.log("button id: "+buttonId)
+    }
+    function ChooseMoto(button) {
+        const motoId = button.getAttribute("data-moto-id");
+
+        var motos = @Html.Raw(Json.Serialize(Model.Motos));
+        var moto = motos.find(moto => moto.maXe == motoId);
+
+        
+        if (moto) {
+            var selectedMoto = @Html.Raw(Json.Serialize(Model.MotoToCompare));
+            selectedMoto.forEach(function (m, index) {
+                if (index != selectedButtonID - 1) {
+                    maXe[index] = m.maXe;
+                }
+                else {
+                    maXe[index] = moto.maXe;
+                }
+                compareMotos();
+            });
+        } else {
+            console.log("Không tìm thấy xe với mã: " + motoId);
+        }
+    }
+
+    function compareMotos() {
+        // Lọc các mã xe hợp lệ (không phải null)
+        var selectedMotos = maXe.filter(item => item !== null);
+
+        if (selectedMotos.length < 2) {
+            // Nếu chưa đủ 2 xe
+            //alert("Bạn cần chọn ít nhất 2 xe để so sánh.");
+        } else {
+            // Nếu đủ, gửi dữ liệu tới controller
+            // Gửi qua GET hoặc POST tới controller
+            // Ví dụ với GET:
+            var url = '@Url.Action("ShowResult", "Moto")';  // Đảm bảo action và controller đúng
+            url += '?motoIds=' + selectedMotos.join(',');
+
+            window.location.href = url;  // Chuyển hướng tới URL controller với mảng mã xe
+        }
+    }
+</script>
+
+<script>
+    // Hàm trích xuất số từ chuỗi (loại bỏ dấu phân cách .)
+    function extractNumber(str) {
+        let numberString = str.replace(/[^\d.-]/g, '');  // Loại bỏ tất cả các ký tự không phải số và dấu chấm
+        return parseFloat(numberString) || 0;  // Chuyển thành số thực
+    }
+
+    function findMinAndHighlight(idPrefix) {
+        // Lấy tất cả các thẻ <td> có class chứa idPrefix
+        const cells = document.querySelectorAll(`td[class*="${idPrefix}"]`);
+
+        let minValue = Infinity;  // Khởi tạo giá trị nhỏ nhất
+        let minCell = null;  // Biến lưu thẻ có giá trị nhỏ nhất
+
+        // Lặp qua tất cả các ô
+        cells.forEach(cell => {
+            const cellValue = extractNumber(cell.innerText);  // Lấy giá trị số của ô
+            if (cellValue < minValue) {  // Kiểm tra nếu giá trị này là nhỏ nhất
+                minValue = cellValue;
+                minCell = cell;
+            }
+        });
+
+        // Bôi màu chữ ô có giá trị nhỏ nhất
+        if (minCell) {
+            minCell.style.color = "#FFA500";  // Bôi chữ màu xanh
+            minCell.style.fontWeight = "bold";  // Bôi chữ đậm
+        }
+    }
+
+    function findMaxAndHighlight(idPrefix) {
+        // Lấy tất cả các thẻ <td> có class chứa idPrefix
+        const cells = document.querySelectorAll(`td[class*="${idPrefix}"]`);
+
+        let maxValue = -Infinity;  // Khởi tạo giá trị lớn nhất
+        let maxCell = null;  // Biến lưu thẻ có giá trị lớn nhất
+
+        // Lặp qua tất cả các ô
+        cells.forEach(cell => {
+            const cellValue = extractNumber(cell.innerText);  // Lấy giá trị số của ô
+            if (cellValue > maxValue) {  // Kiểm tra nếu giá trị này là lớn nhất
+                maxValue = cellValue;
+                maxCell = cell;
+            }
+        });
+
+        // Bôi màu chữ ô có giá trị lớn nhất
+        if (maxCell) {
+            maxCell.style.color = "#FFA500";  // Bôi chữ màu xanh
+            maxCell.style.fontWeight = "bold";  // Bôi chữ đậm
+        }
+    }
+
+    // Gọi hàm để so sánh sau khi trang được tải
+    window.onload = function () {
+        // Tìm giá trị nhỏ nhất trong các ô có class chứa "gia"
+        findMinAndHighlight("gia_");
+        findMinAndHighlight("trongluong_");
+        findMinAndHighlight("kichThuoc_");
+       
+        findMinAndHighlight("khoangCachTrucBanhXe_");
+        findMaxAndHighlight("doCaoYen_");
+        findMaxAndHighlight("doCaoGamXe_");
+        findMaxAndHighlight("dungTichBinhXang_");
+        findMaxAndHighlight("kichCoLop_");
+
+        findMinAndHighlight("phuocTruoc_");
+        findMinAndHighlight("phuocSau_");
+        findMaxAndHighlight("loaiDongCo_");
+
+        findMaxAndHighlight("congSuatToiDa_");
+        findMinAndHighlight("mucTieuThuNhienLieu_");
+
+        findMinAndHighlight("heThongKhoiDong_");
+
+        findMaxAndHighlight("momentCucDai_");
+        findMaxAndHighlight("dungTichXyLanh_");
+        findMinAndHighlight("duongKinhPittong_");
+
+       
+    };
+</script>
+

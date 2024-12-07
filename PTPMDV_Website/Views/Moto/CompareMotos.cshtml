@@ -1,0 +1,214 @@
+﻿@model PTPMDV_Website.ViewModels.CompareDataVM
+@{
+    ViewData["Title"] = "CompareMotos";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="container-fluid pb-5 custom-container">
+    <div class="row px-xl-5">
+        <div class="col-12 justify-content-center">
+            <h3 class="text-primary text-start mb-4">SO SÁNH SẢN PHẨM</h3>
+            
+            <!-- View phần ảnh và nút chọn xe -->
+            <div class="row motor-compare-container justify-content-center">
+                <div class="col-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="thumb mb-3">
+                                <img class="img-fluid" id="imageHolder1"
+                                src="https://www.honda.com.vn/images/xe-may/motor_placeholder.png" alt="Image placeholder">
+                            </div>
+                            <button type="button" class="btn btn-outline-warning w-100" data-toggle="modal" 
+                            data-target="#selectMotoModal" data-index="1"
+                            onclick="changeTaget(this)">
+                                Chọn Thêm Xe <i class="fa fa-motorcycle ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="thumb mb-3">
+                                <img class="img-fluid" id="imageHolder2" src="https://www.honda.com.vn/images/xe-may/motor_placeholder.png" alt="Image placeholder">
+                            </div>
+                            <button type="button" class="btn btn-outline-primary w-100" data-toggle="modal" 
+                            data-target="#selectMotoModal" data-index="2"
+                                    onclick="changeTaget(this)">
+                                Chọn Thêm Xe <i class="fa fa-motorcycle ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-4 mb-3 d-none d-lg-block">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="thumb mb-3">
+                                <img class="img-fluid" id="imageHolder3" src="https://www.honda.com.vn/images/xe-may/motor_placeholder.png" alt="Image placeholder">
+                            </div>
+                            <button type="button" class="btn btn-outline-warning w-100" data-toggle="modal" 
+                            data-target="#selectMotoModal" data-index="3"
+                                    onclick="changeTaget(this)">
+                                Chọn Thêm Xe <i class="fa fa-motorcycle ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary justify-content-end" onclick="compareMotos()">So Sánh</button>
+            </div>
+
+
+            
+            
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="selectMotoModal" tabindex="-1" role="dialog" aria-labelledby="selectMotoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="selectMotoModalLabel">Chọn Xe</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="moto-list">
+                    @foreach (var moto in Model.Motos)
+                    {
+                        <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
+                            <div class="product-item bg-light">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="~/img/Mota/@moto.AnhMoTaUrl" alt="@moto.TenXe">
+                                    <div class="product-action">
+                                        <button class="btn btn-primary select-moto"
+                                                data-moto-id="@moto.MaXe"
+                                                data-dismiss="modal"
+                                                onclick="ChooseMoto(this)">
+                                            Chọn xe
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="text-center py-2">
+                                    <h6>@moto.TenXe</h6>
+                                    <p>@moto.GiaBanMoTa VNĐ</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+
+    .custom-container {
+        max-width: 90%; /* Điều chỉnh kích thước theo ý muốn */
+    }
+    .border-right {
+        border-right: 1px solid #dee2e6; /* Đường kẻ phân cách dọc */
+    }
+    .border-bottom {
+        border-bottom: 1px solid #dee2e6; /* Đường kẻ phân cách ngang */
+    }
+    .no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .no-gutters > .col,
+    .no-gutters > [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .spec_group {
+        margin-bottom: 0; /* Loại bỏ khoảng cách giữa các phần tử dọc */
+    }
+
+    .thumb img {
+        width: 100%; /* Chiều rộng ảnh đầy đủ khung */
+        height: 200px; /* Chiều cao cố định */
+        object-fit: cover; /* Cắt hình ảnh để vừa khung */
+        border-radius: 5px; /* Tùy chọn, làm góc ảnh bo tròn */
+    }
+
+    /* Đặt kích thước khung cho ảnh trong modal */
+    .product-img img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    /* Đặt kích thước ảnh khi hiển thị trong bảng so sánh */
+    .motor-compare-container .thumb img {
+        width: 60%;
+        height: 150px;
+        object-fit: cover;
+    }
+
+</style>
+
+<script>
+    var maXe = [];
+    var selectedButtonID = null;
+    function changeTaget(button)
+    {
+        const buttonId = button.getAttribute("data-index");
+        selectedButtonID = buttonId;
+        //console.log("button id: "+buttonId)
+    }
+    function ChooseMoto(button) {
+        // Lấy mã xe từ thuộc tính data-moto-id của button
+        const motoId = button.getAttribute("data-moto-id");
+
+        var motos = @Html.Raw(Json.Serialize(Model.Motos));
+        var moto = motos.find(moto => moto.maXe == motoId);
+        //console.log(motos);
+
+        if (moto) {     
+            // Gọi updateMotoComparison để thay đổi ảnh và thông tin vào bảng so sánh
+            const imageUrl = moto.anhMoTaUrl;
+
+            // Cập nhật ảnh vào imageHolder1
+            const imageHolder = document.getElementById("imageHolder" + selectedButtonID);
+
+            if (imageHolder) {
+                imageHolder.src = "/img/MoTa/"+imageUrl; // Thay đổi đường dẫn ảnh
+            }
+            maXe[selectedButtonID] = moto.maXe;
+        } else {
+            console.log("Không tìm thấy xe với mã: " + motoId);
+        }
+    }
+
+    function compareMotos() {
+        // Lọc các mã xe hợp lệ (không phải null)
+        var selectedMotos = maXe.filter(item => item !== null);
+
+        if (selectedMotos.length < 2) {
+            // Nếu chưa đủ 2 xe
+            alert("Bạn cần chọn ít nhất 2 xe để so sánh.");
+        } else {
+            // Nếu đủ, gửi dữ liệu tới controller
+            // Gửi qua GET hoặc POST tới controller
+            // Ví dụ với GET:
+            var url = '@Url.Action("ShowResult", "Moto")';  // Đảm bảo action và controller đúng
+            url += '?motoIds=' + selectedMotos.join(',');
+
+            window.location.href = url;  // Chuyển hướng tới URL controller với mảng mã xe
+        }
+    }
+
+</script>
+
+
+
+

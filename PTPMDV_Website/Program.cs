@@ -16,9 +16,17 @@ namespace PTPMDV_Website
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("OurWebsite"));
             });
-            //https://docs.automapper.org/en/stable/Dependency-injection.html
+            
             builder.Services.AddAutoMapper(typeof(AutomapperProfile));
+            builder.Services.AddDistributedMemoryCache(); // S? d?ng b? nh? t?m
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // Th?i gian t?n t?i c?a session
+                options.Cookie.HttpOnly = true; // B?o m?t cookie
+                options.Cookie.IsEssential = true; // B?t bu?c cookie cho session ho?t ??ng
+            });
 
+            builder.Services.AddHttpClient();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -28,7 +36,7 @@ namespace PTPMDV_Website
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

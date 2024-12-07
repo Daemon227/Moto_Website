@@ -1,4 +1,4 @@
-﻿@model PTPMDV_Website.ViewModels.MotoDetailVM;
+﻿@model PTPMDV_Website.ViewModels.MotoVM;
 @using Microsoft.AspNetCore.Http
 @{
     ViewData["Title"] = "ProducDetail";
@@ -81,9 +81,9 @@
     <div class="row px-xl-5">
         <div class="col-12">
             <nav class="breadcrumb bg-light mb-30">
-                <a class="breadcrumb-item text-dark" href="#">Home</a>
-                <a class="breadcrumb-item text-dark" href="#">Shop</a>
-                <span class="breadcrumb-item active">Shop Detail</span>
+                <a class="breadcrumb-item text-dark" asp-controller="Home" asp-action="Index">Trang Chủ</a>
+                <a class="breadcrumb-item text-dark" asp-controller="Moto" asp-action="Index">Danh Sách Xe</a>
+                <span class="breadcrumb-item active">Chi Tiết Xe</span>
             </nav>
         </div>
     </div>
@@ -102,9 +102,9 @@
                         var isFirstImage = true;
                         foreach (var version in Model.MotoVersions)
                         {
-                            foreach (var versionColor in version.VersionColors)
+                            foreach (var versionColor in version.VersionColorVM)
                             {
-                                foreach (var versionImg in versionColor.VersionImages)
+                                foreach (var versionImg in versionColor.VersionImageVM)
                                 {
                                     <div class="carousel-item @(isFirstImage ? "active" : "")">
                                         <img class="w-100 h-100" src="~/img/AnhVersion/@versionImg.ImageUrl" alt="Image">
@@ -182,7 +182,7 @@
                                 if (version.MaVersion.Equals(versionId))
                                 {
                                     int i = 1;
-                                    foreach (var versionColor in version.VersionColors)
+                                    foreach (var versionColor in version.VersionColorVM)
                                     {
                                         <div class="custom-control custom-radio custom-control-inline">
                                             <input type="radio" class="custom-control-input" id="color-@i" name="color" value="@versionColor.MaVersionColor" @(i==1 ? "checked":"") onclick="updateColor(this.value)">
@@ -315,7 +315,7 @@
 
     <script>
         var versionId = @Html.Raw(Json.Serialize(Model.MotoVersions.First().MaVersion));
-        var versionColorId = @Html.Raw(Json.Serialize(Model.MotoVersions.First().VersionColors.First().MaVersionColor));
+        var versionColorId = @Html.Raw(Json.Serialize(Model.MotoVersions.First().VersionColorVM.First().MaVersionColor));
         function updateVersion(selectedVersion) {
             versionId = selectedVersion; // Cập nhật versionId
             updateListColor();
@@ -332,11 +332,14 @@
             colorContainer.innerHTML = ''; // Xóa các nút radio cũ
 
             var motoVersions = @Html.Raw(Json.Serialize(Model.MotoVersions));
+            console.log(versionId);
+            console.log(versionColorId);
+            console.log(motoVersions);
             var index = 1;
 
             for (var version of motoVersions) {
                 if (version.maVersion === versionId) { // Tìm phiên bản được chọn
-                    for (var color of version.versionColors) {
+                    for (var color of version.versionColorVM) {
                         var colorDiv = document.createElement('div');
                         colorDiv.className = 'custom-control custom-radio custom-control-inline';
 
@@ -394,9 +397,9 @@
 
             for (var version of motoVersions){
                 if(version.maVersion === versionId){
-                    for (var color of version.versionColors){
+                    for (var color of version.versionColorVM){
                         if(color.maVersionColor === versionColorId){
-                            for(var img of color.versionImages){
+                            for(var img of color.versionImageVM){
                                 console.log(img.imageUrl);
                                 var url = img.imageUrl;
                                 var item = document.createElement('div');
@@ -426,9 +429,9 @@
 <h4 class="library-title">Thư Viện Ảnh</h4>
 <div class="motor-library-container_div">
     <div class="row_moto_library">
-        @if (Model.MaLibraryNavigation != null && Model.MaLibraryNavigation.LibraryImages.Any())
+        @if (Model.MaLibraryNavigation != null && Model.MaLibraryNavigation.LibraryImageVM.Any())
         {
-            @foreach (var libraryImg in Model.MaLibraryNavigation.LibraryImages)
+            @foreach (var libraryImg in Model.MaLibraryNavigation.LibraryImageVM)
             {
                 <div class="moto_library_image" data-index="0">
                     <div class="image-moto-libary-item-box">

@@ -1,8 +1,8 @@
-﻿using PTPMDV_Website.Data;
+﻿using PTPMDV_Website.Models;
 
 namespace PTPMDV_Website.ViewModels
 {
-    public class MotoDetailVM
+    public class MotoVM
     {
         public string MaXe { get; set; } = null!;
 
@@ -58,13 +58,12 @@ namespace PTPMDV_Website.ViewModels
 
         public string? MaLibrary { get; set; }
 
-        public virtual Brand? MaHangSanXuatNavigation { get; set; }
+        public virtual BrandVM? MaHangSanXuatNavigation { get; set; }
 
-        public virtual MotoLibrary? MaLibraryNavigation { get; set; }
+        public virtual LibraryVM? MaLibraryNavigation { get; set; }
 
-        public virtual MotoType? MaLoaiNavigation { get; set; }
+        public virtual TypeVM? MaLoaiNavigation { get; set; }
 
-        public virtual ICollection<MotoVersion> MotoVersions { get; set; } = new List<MotoVersion>();
-
+        public virtual ICollection<VersionVM>? MotoVersions { get; set; } = new List<VersionVM>();
     }
 }

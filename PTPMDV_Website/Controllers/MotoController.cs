@@ -1,112 +1,138 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Newtonsoft.Json;
 using PTPMDV_Website.Data;
+using PTPMDV_Website.Helper;
 using PTPMDV_Website.ViewModels;
+using System;
+using System.Drawing.Printing;
+using X.PagedList.Extensions;
 
 namespace PTPMDV_Website.Controllers
 {
     public class MotoController : Controller
     {
         private readonly MotoWebsiteContext db;
-        public MotoController(MotoWebsiteContext context)
+        private readonly HttpClient _httpClient;
+        private readonly ILogger<MotoController> _logger;
+        public MotoController(MotoWebsiteContext context, HttpClient httpClient, ILogger<MotoController> logger)
         {
             db = context;
+            _httpClient = httpClient;
+            _logger = logger;
         }
        
-        public IActionResult Index(string? typeId, string? brandId)
+        public async Task<IActionResult> Index(int? page, string? brandID, string? typeID)
         {
-            var motos = db.MotoBikes.AsQueryable();
-            if (!string.IsNullOrEmpty(brandId))
-            {
-                motos = motos.Where(p => p.MaHangSanXuat.Equals(brandId));
-            }
-            if (!string.IsNullOrEmpty(typeId))
-            {
-                motos = motos.Where(p => p.MaLoai.Equals(typeId));
-            }
+            int pageSize = 6;  // Số lượng mục mỗi trang
+            int pageNumber = (page ?? 1); // Nếu page là null, gán giá trị mặc định là 1
 
-            var result = motos.Select(p => new MotoListVM
+            try
             {
-                maXe = p.MaXe,
-                tenXe = p.TenXe,
-                giaMota = p.GiaBanMoTa ?? "",
-                hinhMota = p.AnhMoTaUrl ?? ""
-            }).ToList();
-            return View(result);
+                if (brandID == null && typeID == null)
+                {
+                    var response = await _httpClient.GetAsync("https://localhost:7252/api/Moto/Motos");
+                    response.EnsureSuccessStatusCode();
+                    var data = await response.Content.ReadAsStringAsync();
+                    var motos = JsonConvert.DeserializeObject<List<MotoVM>>(data);
+                    var pageResult = motos.ToPagedList(pageNumber, pageSize);
+                    return View(pageResult);
+                }
+                else if (brandID != null && typeID== null)
+                {
+                    var response = await _httpClient.GetAsync("https://localhost:7252/api/Moto/Motos");
+                    response.EnsureSuccessStatusCode();
+                    var data = await response.Content.ReadAsStringAsync();
+                    var motos = JsonConvert.DeserializeObject<List<MotoVM>>(data);
+                    var pageResult = motos.Where(m=>m.MaHangSanXuat==brandID).ToPagedList(pageNumber, pageSize);
+                    return View(pageResult);
+                }
+                else if (brandID == null && typeID != null)
+                {
+                    var response = await _httpClient.GetAsync("https://localhost:7252/api/Moto/Motos");
+                    response.EnsureSuccessStatusCode();
+                    var data = await response.Content.ReadAsStringAsync();
+                    var motos = JsonConvert.DeserializeObject<List<MotoVM>>(data);
+                    var pageResult = motos.Where(m => m.MaLoai == typeID).ToPagedList(pageNumber, pageSize);
+                    return View(pageResult);
+                }
+                else
+                {
+                    var response = await _httpClient.GetAsync("https://localhost:7252/api/Moto/Motos");
+                    response.EnsureSuccessStatusCode();
+                    var data = await response.Content.ReadAsStringAsync();
+                    var motos = JsonConvert.DeserializeObject<List<MotoVM>>(data);
+                    var pageResult = motos.Where(m => m.MaHangSanXuat == brandID && m.MaLoai == typeID).ToPagedList(pageNumber, pageSize);
+                    return View(pageResult);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error fetching brands from API");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
-        public IActionResult ProducDetail(string? motoId)
+        public async Task<IActionResult> ProducDetail(string? motoId)
         {
             if (!string.IsNullOrEmpty(motoId))
             {
 
             }
-            var moto = db.MotoBikes.Include(p => p.MotoVersions)
-                    .ThenInclude(v=> v.VersionColors)
-                        .ThenInclude(i => i.VersionImages)
-                    .Include(l => l.MaLibraryNavigation)
-                        .ThenInclude(i2 => i2.LibraryImages)
-                         .FirstOrDefault(p => p.MaXe == motoId);
+            var response = await _httpClient.GetAsync("https://localhost:7252/api/Moto/Motos/"+motoId);
+            response.EnsureSuccessStatusCode();
+            var data = await response.Content.ReadAsStringAsync();
+            var moto = JsonConvert.DeserializeObject<MotoVM>(data);
+            return View(moto);
+        }
 
-            var result = new MotoDetailVM
+
+       public async Task<IActionResult> CompareMotos()
+        {
+            var response = await _httpClient.GetAsync("https://localhost:7252/api/Moto/Motos");
+            response.EnsureSuccessStatusCode();
+            var data = await response.Content.ReadAsStringAsync();
+            var motos = JsonConvert.DeserializeObject<List<MotoVM>>(data);
+
+            var response1 = await _httpClient.GetAsync("https://localhost:7252/api/Type/Types");
+            response1.EnsureSuccessStatusCode();
+            var data1 = await response1.Content.ReadAsStringAsync();
+            var types = JsonConvert.DeserializeObject<List<TypeVM>>(data1);
+
+            var result = new CompareDataVM
             {
-                MaXe = moto.MaXe,
-                TenXe = moto.TenXe ?? "",
-                MaHangSanXuat = moto.MaHangSanXuat ?? "",
-                AnhMoTaUrl = moto.AnhMoTaUrl ?? "",
-                GiaBanMoTa = moto.GiaBanMoTa ?? "",
+                Motos = motos,
+                Types = types
+            };
+            return View(result);
+        }
 
-                TrongLuong = moto.TrongLuong ?? "",
-                KichThuoc = moto.KichThuoc ?? "",
-                KhoangCachTrucBanhXe = moto.KhoangCachTrucBanhXe ?? "",
-                DoCaoYen = moto.DoCaoYen ?? "",
-                DoCaoGamXe = moto.DoCaoGamXe ?? "",
-                DungTichBinhXang = moto.DungTichBinhXang ?? "",
-                KichCoLop = moto.KichCoLop ?? "",
-                PhuocTruoc = moto.PhuocTruoc ?? "",
-                PhuocSau = moto.PhuocSau ?? "",
-                LoaiDongCo = moto.LoaiDongCo ?? "",
-                CongSuatToiDa = moto.CongSuatToiDa ?? "",
-                MucTieuThuNhienLieu = moto.MucTieuThuNhienLieu ?? "",
-                HeThongKhoiDong = moto.HeThongKhoiDong ?? "",
-                MomentCucDai = moto.MomentCucDai ?? "",
-                DungTichXyLanh = moto.DungTichXyLanh ?? "",
-                DuongKinhHanhTrinhPittong = moto.DuongKinhHanhTrinhPittong ?? "",
-                TySoNen = moto.TySoNen ?? "",
-                MaLibrary = moto.MaLibrary,
-                MaHangSanXuatNavigation = moto.MaHangSanXuatNavigation,
-                MaLibraryNavigation = new MotoLibrary
-                {
-                    MaLibrary = moto.MaLibraryNavigation.MaLibrary,
-                    LibraryImages = moto.MaLibraryNavigation.LibraryImages.Select(img => new LibraryImage
-                    {
-                        ImageId = img.ImageId,
-                        ImageUrl = img.ImageUrl,
-                    }).ToList()
-                },
-                MaLoaiNavigation = moto.MaLoaiNavigation,
-                TienIch = moto.TienIch,
-                TinhNangNoiBat = moto.TinhNangNoiBat,
-                ThietKe = moto.ThietKe,
+        public async Task<IActionResult> ShowResult(string motoIds)
+        {
+            var selectedMotos = motoIds.Split(',').ToList();
+            
+            var response = await _httpClient.GetAsync("https://localhost:7252/api/Moto/Motos");
+            response.EnsureSuccessStatusCode();
+            var data = await response.Content.ReadAsStringAsync();
+            var motos = JsonConvert.DeserializeObject<List<MotoVM>>(data);
 
-                MotoVersions = moto.MotoVersions.Select(v => new MotoVersion
-                {
-                    MaVersion = v.MaVersion,
-                    TenVersion = v.TenVersion ?? "",
-                    GiaBanVersion = v.GiaBanVersion ?? "",
-                    VersionColors = v.VersionColors.Select(c => new VersionColor
-                    {
-                        MaVersionColor = c.MaVersionColor,
-                        TenMau = c.TenMau,
-                        VersionImages = c.VersionImages.Select(i => new VersionImage
-                        {
-                            ImageId = i.ImageId,
-                            ImageUrl = i.ImageUrl,
-                        }).ToList()
-                    }).ToList()
-                }).ToList()
+            var motoSelected = new List<MotoVM>();
+            foreach (var id in selectedMotos)
+            {
+                motoSelected.Add(motos.FirstOrDefault(m=>m.MaXe==id));
+            }
 
+            var response1 = await _httpClient.GetAsync("https://localhost:7252/api/Type/Types");
+            response1.EnsureSuccessStatusCode();
+            var data1 = await response1.Content.ReadAsStringAsync();
+            var types = JsonConvert.DeserializeObject<List<TypeVM>>(data1);
+
+            var result = new CompareDataVM
+            {
+                Motos = motos,
+                Types = types,
+                MotoToCompare = motoSelected
             };
             return View(result);
         }
