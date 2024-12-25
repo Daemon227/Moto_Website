@@ -22,9 +22,9 @@
                 <div class="card h-100 shadow-sm border-0 rounded">
                     <div class="card-body text-center">
                         <div class="thumb mb-3 border border-warning rounded" style="height: 200px; display: flex; align-items: center; 
-                            justify-content: center;"> 
-                            <img class="img-fluid" src="~/img/MoTa/@selectedMoto.AnhMoTaUrl" alt="Image placeholder" 
-                            style="max-height: 100%; max-width: 100%;"> 
+                            justify-content: center;">
+                            <img class="img-fluid" src="@($"https://localhost:7252/images/{selectedMoto.AnhMoTaUrl}")" alt="Image placeholder"
+                                 style="max-height: 100%; max-width: 100%;"> 
                         </div>
                         <button type="button" class="btn btn-warning w-100" data-toggle="modal"
                                 data-target="#selectMotoModal" data-index="@i"
@@ -263,7 +263,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
                             <div class="product-item bg-light">
                                 <div class="product-img position-relative overflow-hidden">
-                                    <img class="img-fluid w-100" src="~/img/Mota/@moto.AnhMoTaUrl" alt="@moto.TenXe">
+                                    <img class="img-fluid w-100" src="@($"https://localhost:7252/images/{moto.AnhMoTaUrl}")" alt="@moto.TenXe">
                                     <div class="product-action">
                                         <button class="btn btn-primary select-moto"
                                                 data-moto-id="@moto.MaXe"

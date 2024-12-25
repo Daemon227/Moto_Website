@@ -13,12 +13,12 @@ namespace PTPMDV_Website.Controllers
 {
     public class MotoController : Controller
     {
-        private readonly MotoWebsiteContext db;
+        //private readonly MotoWebsiteContext db;
         private readonly HttpClient _httpClient;
         private readonly ILogger<MotoController> _logger;
         public MotoController(MotoWebsiteContext context, HttpClient httpClient, ILogger<MotoController> logger)
         {
-            db = context;
+            //db = context;
             _httpClient = httpClient;
             _logger = logger;
         }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PTPMDV_Website")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b86bf781637a2a7adda1aae7a27b412096f8823e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77d37207c812432f2676f591a7df7dfe699e92b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("PTPMDV_Website")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PTPMDV_Website")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

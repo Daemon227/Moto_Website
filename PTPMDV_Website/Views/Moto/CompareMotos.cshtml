@@ -81,7 +81,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
                             <div class="product-item bg-light">
                                 <div class="product-img position-relative overflow-hidden">
-                                    <img class="img-fluid w-100" src="~/img/Mota/@moto.AnhMoTaUrl" alt="@moto.TenXe">
+                                    <img class="img-fluid w-100" src="@($"https://localhost:7252/images/{moto.AnhMoTaUrl}")" alt="@moto.TenXe">
                                     <div class="product-action">
                                         <button class="btn btn-primary select-moto"
                                                 data-moto-id="@moto.MaXe"
@@ -181,7 +181,7 @@
             const imageHolder = document.getElementById("imageHolder" + selectedButtonID);
 
             if (imageHolder) {
-                imageHolder.src = "/img/MoTa/"+imageUrl; // Thay đổi đường dẫn ảnh
+                imageHolder.src = "https://localhost:7252/images/" + imageUrl; // Thay đổi đường dẫn ảnh
             }
             maXe[selectedButtonID] = moto.maXe;
         } else {
