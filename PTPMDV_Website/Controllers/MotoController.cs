@@ -23,48 +23,72 @@ namespace PTPMDV_Website.Controllers
             _logger = logger;
         }
        
-        public async Task<IActionResult> Index(int? page, string? brandID, string? typeID)
+        public async Task<IActionResult> Index(int? page, string? brandID, string? typeID, string?searchKey)
         {
+            TempData["SearchKey"] = searchKey;
             int pageSize = 6;  // Số lượng mục mỗi trang
             int pageNumber = (page ?? 1); // Nếu page là null, gán giá trị mặc định là 1
 
             try
             {
+                var response = await _httpClient.GetAsync("https://localhost:7252/api/Moto/Motos");
+                response.EnsureSuccessStatusCode();
+                var data = await response.Content.ReadAsStringAsync();
+                var motos = JsonConvert.DeserializeObject<List<MotoVM>>(data);
                 if (brandID == null && typeID == null)
-                {
-                    var response = await _httpClient.GetAsync("https://localhost:7252/api/Moto/Motos");
-                    response.EnsureSuccessStatusCode();
-                    var data = await response.Content.ReadAsStringAsync();
-                    var motos = JsonConvert.DeserializeObject<List<MotoVM>>(data);
-                    var pageResult = motos.ToPagedList(pageNumber, pageSize);
-                    return View(pageResult);
+                { 
+                    if (searchKey== null)
+                    {     
+                        var pageResult = motos.ToPagedList(pageNumber, pageSize);
+                        return View(pageResult);
+                    }
+                    else
+                    {
+                        var pageResult = motos.Where(m=>m.TenXe.ToLower().Contains(searchKey.ToLower())).ToPagedList(pageNumber, pageSize);
+                        return View(pageResult);
+                    }
                 }
                 else if (brandID != null && typeID== null)
-                {
-                    var response = await _httpClient.GetAsync("https://localhost:7252/api/Moto/Motos");
-                    response.EnsureSuccessStatusCode();
-                    var data = await response.Content.ReadAsStringAsync();
-                    var motos = JsonConvert.DeserializeObject<List<MotoVM>>(data);
-                    var pageResult = motos.Where(m=>m.MaHangSanXuat==brandID).ToPagedList(pageNumber, pageSize);
-                    return View(pageResult);
+                {      
+                    
+                    if (searchKey == null)
+                    {
+                        var pageResult = motos.Where(m => m.MaHangSanXuat == brandID).ToPagedList(pageNumber, pageSize);
+                        return View(pageResult);
+                    }
+                    else
+                    {
+                        var pageResult = motos.Where(m => m.MaHangSanXuat == brandID && m.TenXe.ToLower().Contains(searchKey.ToLower())).ToPagedList(pageNumber, pageSize);
+                        return View(pageResult);
+                    }
                 }
                 else if (brandID == null && typeID != null)
-                {
-                    var response = await _httpClient.GetAsync("https://localhost:7252/api/Moto/Motos");
-                    response.EnsureSuccessStatusCode();
-                    var data = await response.Content.ReadAsStringAsync();
-                    var motos = JsonConvert.DeserializeObject<List<MotoVM>>(data);
-                    var pageResult = motos.Where(m => m.MaLoai == typeID).ToPagedList(pageNumber, pageSize);
-                    return View(pageResult);
+                {                 
+                    
+                    if (searchKey == null)
+                    {
+                        var pageResult = motos.Where(m => m.MaLoai == typeID).ToPagedList(pageNumber, pageSize);
+                        return View(pageResult);
+                    }
+                    else
+                    {
+                        var pageResult = motos.Where(m => m.MaLoai == typeID && m.TenXe.ToLower().Contains(searchKey.ToLower())).ToPagedList(pageNumber, pageSize);
+                        return View(pageResult);
+                    }
                 }
                 else
-                {
-                    var response = await _httpClient.GetAsync("https://localhost:7252/api/Moto/Motos");
-                    response.EnsureSuccessStatusCode();
-                    var data = await response.Content.ReadAsStringAsync();
-                    var motos = JsonConvert.DeserializeObject<List<MotoVM>>(data);
-                    var pageResult = motos.Where(m => m.MaHangSanXuat == brandID && m.MaLoai == typeID).ToPagedList(pageNumber, pageSize);
-                    return View(pageResult);
+                {          
+                    
+                    if (searchKey == null)
+                    {
+                        var pageResult = motos.Where(m => m.MaHangSanXuat == brandID && m.MaLoai == typeID).ToPagedList(pageNumber, pageSize);
+                        return View(pageResult);
+                    }
+                    else
+                    {
+                        var pageResult = motos.Where(m => m.MaHangSanXuat == brandID && m.MaLoai == typeID && m.TenXe.ToLower().Contains(searchKey.ToLower())).ToPagedList(pageNumber, pageSize);
+                        return View(pageResult);
+                    }
                 }
             }
             catch (Exception ex)

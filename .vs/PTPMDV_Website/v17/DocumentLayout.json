@@ -3,36 +3,20 @@
   "WorkspaceRootPath": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\website\\ptpmdv_website\\ptpmdv_website\\views\\moto\\producdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\views\\moto\\producdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\website\\ptpmdv_website\\ptpmdv_website\\controllers\\motocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\controllers\\motocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\website\\ptpmdv_website\\ptpmdv_website\\views\\moto\\showresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\views\\moto\\showresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\website\\ptpmdv_website\\ptpmdv_website\\views\\shared\\_layoutpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\views\\shared\\_layoutpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\website\\ptpmdv_website\\ptpmdv_website\\views\\moto\\comparemotos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\views\\moto\\comparemotos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\website\\ptpmdv_website\\ptpmdv_website\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\website\\ptpmdv_website\\ptpmdv_website\\models\\versioncolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\models\\versioncolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\website\\ptpmdv_website\\ptpmdv_website\\models\\versionimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\models\\versionimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\website\\ptpmdv_website\\ptpmdv_website\\viewmodels\\libraryimagevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\viewmodels\\libraryimagevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\website\\ptpmdv_website\\ptpmdv_website\\views\\user\\dangnhap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\views\\user\\dangnhap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|d:\\hoc tap\\hoc ky 5\\ptpm dv\\website\\ptpmdv_website\\ptpmdv_website\\viewmodels\\signupvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3A9A9BF-346F-4678-B403-C998F6EB436D}|PTPMDV_Website\\PTPMDV_Website.csproj|solutionrelative:ptpmdv_website\\viewmodels\\signupvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,107 +26,59 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ProducDetail.cshtml",
-              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\Moto\\ProducDetail.cshtml",
-              "RelativeDocumentMoniker": "PTPMDV_Website\\Views\\Moto\\ProducDetail.cshtml",
-              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\Moto\\ProducDetail.cshtml",
-              "RelativeToolTip": "PTPMDV_Website\\Views\\Moto\\ProducDetail.cshtml",
-              "ViewState": "AgIAAKIBAAAAAAAAAAAAALgBAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-25T08:56:57.905Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ShowResult.cshtml",
-              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\Moto\\ShowResult.cshtml",
-              "RelativeDocumentMoniker": "PTPMDV_Website\\Views\\Moto\\ShowResult.cshtml",
-              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\Moto\\ShowResult.cshtml",
-              "RelativeToolTip": "PTPMDV_Website\\Views\\Moto\\ShowResult.cshtml",
-              "ViewState": "AgIAAPcAAAAAAAAAAAAAAAUBAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-25T08:42:00.089Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CompareMotos.cshtml",
-              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\Moto\\CompareMotos.cshtml",
-              "RelativeDocumentMoniker": "PTPMDV_Website\\Views\\Moto\\CompareMotos.cshtml",
-              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\Moto\\CompareMotos.cshtml",
-              "RelativeToolTip": "PTPMDV_Website\\Views\\Moto\\CompareMotos.cshtml",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFYAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-25T08:39:25.869Z",
+              "Title": "SignUpVM.cs",
+              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\ViewModels\\SignUpVM.cs",
+              "RelativeDocumentMoniker": "PTPMDV_Website\\ViewModels\\SignUpVM.cs",
+              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\ViewModels\\SignUpVM.cs",
+              "RelativeToolTip": "PTPMDV_Website\\ViewModels\\SignUpVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T18:16:47.728Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "_LayoutPage.cshtml",
+              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\Shared\\_LayoutPage.cshtml",
+              "RelativeDocumentMoniker": "PTPMDV_Website\\Views\\Shared\\_LayoutPage.cshtml",
+              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\Shared\\_LayoutPage.cshtml",
+              "RelativeToolTip": "PTPMDV_Website\\Views\\Shared\\_LayoutPage.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-26T18:14:56.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "PTPMDV_Website\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Controllers\\UserController.cs",
+              "RelativeToolTip": "PTPMDV_Website\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAcwG4AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T17:52:43.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "MotoController.cs",
               "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Controllers\\MotoController.cs",
               "RelativeDocumentMoniker": "PTPMDV_Website\\Controllers\\MotoController.cs",
               "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Controllers\\MotoController.cs",
               "RelativeToolTip": "PTPMDV_Website\\Controllers\\MotoController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAIwEwAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-01T01:53:51.274Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "VersionColor.cs",
-              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Models\\VersionColor.cs",
-              "RelativeDocumentMoniker": "PTPMDV_Website\\Models\\VersionColor.cs",
-              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Models\\VersionColor.cs",
-              "RelativeToolTip": "PTPMDV_Website\\Models\\VersionColor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T06:28:30.608Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "VersionImage.cs",
-              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Models\\VersionImage.cs",
-              "RelativeDocumentMoniker": "PTPMDV_Website\\Models\\VersionImage.cs",
-              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Models\\VersionImage.cs",
-              "RelativeToolTip": "PTPMDV_Website\\Models\\VersionImage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T06:28:35.998Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "LibraryImageVM.cs",
-              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\ViewModels\\LibraryImageVM.cs",
-              "RelativeDocumentMoniker": "PTPMDV_Website\\ViewModels\\LibraryImageVM.cs",
-              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\ViewModels\\LibraryImageVM.cs",
-              "RelativeToolTip": "PTPMDV_Website\\ViewModels\\LibraryImageVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T06:24:12.909Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DangNhap.cshtml",
-              "DocumentMoniker": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\User\\DangNhap.cshtml",
-              "RelativeDocumentMoniker": "PTPMDV_Website\\Views\\User\\DangNhap.cshtml",
-              "ToolTip": "D:\\HOC TAP\\HOC KY 5\\PTPM DV\\Website\\PTPMDV_Website\\PTPMDV_Website\\Views\\User\\DangNhap.cshtml",
-              "RelativeToolTip": "PTPMDV_Website\\Views\\User\\DangNhap.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-04T13:34:24.088Z"
             }
           ]
         }

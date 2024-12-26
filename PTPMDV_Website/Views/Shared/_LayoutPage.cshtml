@@ -42,13 +42,16 @@
                         </a>
                     </div>
                     <div class="col-lg-4 col-6 text-left">
-                        <form action="">
+                        @{
+                            var searchKey = TempData["SearchKey"]?.ToString() ?? "";
+                        }
+                        <form method="get" asp-controller="Moto" asp-action="Index">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for products">
+                                <input type="text" class="form-control" placeholder="Search for products" name="searchKey" value="@searchKey">
                                 <div class="input-group-append">
-                                    <span class="input-group-text bg-transparent text-primary">
+                                    <button type="submit" class="input-group-text bg-transparent text-primary">
                                         <i class="fa fa-search"></i>
-                                    </span>
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -56,12 +59,21 @@
                     <div class="col-lg-4 col-6 text-right">
                         <div class="d-inline-flex align-items-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="">Sign in</a>
-                                    <a class="dropdown-item" href="">Sign up</a>
-                                    <a class="dropdown-item" asp-controller="User" asp-action="DangKy">Register</a>
-                                </div>
+                                @if ( TempData["Login"]!= null)
+                                {
+                                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">@TempData["login"]</button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" asp-controller="User" asp-action="LogOut">Đăng xuất</a>                           
+                                    </div>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" asp-controller="User" asp-action="SignIn">Đăng Nhập</a>
+                                        <a class="dropdown-item" asp-controller="User" asp-action="SignUp">Đăng Ký</a>
+                                    </div>
+                                }                         
                             </div>
                         </div>
                     </div>

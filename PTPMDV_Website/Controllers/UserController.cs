@@ -1,76 +1,128 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PTPMDV_Website.Data;
 using PTPMDV_Website.Helper;
 using PTPMDV_Website.ViewModels;
+using System.Net;
+using System.Security.Claims;
+using System.Text;
 
 namespace PTPMDV_Website.Controllers
 {
     public class UserController : Controller
     {
-        private readonly MotoWebsiteContext db;
-        private readonly IMapper _mapper;
         private readonly ILogger<UserController> _logger;
-        public UserController(MotoWebsiteContext context, IMapper mapper, ILogger<UserController> logger)
+        private readonly HttpClient _httpClient;
+
+        public UserController(ILogger<UserController> logger, HttpClient httpClient)
         {
-            db = context;
-            _mapper = mapper;
+
+            _httpClient = httpClient;
             _logger = logger;
         }
-
         [HttpGet]
-        public IActionResult DangKy()
+        public IActionResult SignUp()
         {
             return View();
         }
-
         [HttpPost]
-        public  IActionResult DangKy(RegisterVM model)
+        public async Task<IActionResult> SignUp(SignUpVM model)
         {
-            //_logger.LogError("name: " + model.Username + "pass: " + model.Password);
-            var user = new User
+            if (ModelState.IsValid)
             {
-                UserId = MyUtil.GenerateRandomKey(),
-                Username = model.Username,
-                Password = model.Password,
-                Role = "user"
-            };
-            db.Add(user);
-            try
-            {
-                var result = db.SaveChanges();
-                if (result > 0)
+                var user = new User
                 {
-                    return RedirectToAction("Index", "Moto");
+                    UserId = MyUtil.GenarateRandomKey(),
+                    Username = model.Username,
+                    Password = model.Password,
+                    Email = model.Email,
+                    Role = "khach"
+                };
+                var content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync("https://localhost:7252/api/User/Users", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    _logger.LogInformation("Tao Tk Thanh Cong");
+                    return RedirectToAction("SignIn", "User");
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                {
+                    var errorMessage = await response.Content.ReadAsStringAsync();
+                    ModelState.AddModelError(string.Empty, errorMessage);
+                    return View(model);
                 }
                 else
                 {
-                    _logger.LogError("Không lưu được, không có hàng nào bị ảnh hưởng.");
+                    _logger.LogError("Error creating tk");
+                    ModelState.AddModelError(string.Empty, "Error creating tk");
+                    return View(model);
                 }
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Lỗi khi lưu dữ liệu vào cơ sở dữ liệu.");
-                throw; // Ném lại lỗi để dễ dàng kiểm tra khi debug
-            }
-            return View();
+            else { return View(); }
         }
 
         [HttpGet]
-        public IActionResult DangNhap()
+        public IActionResult SignIn(string? returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> SignIn(SignInVM model, string? returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            if (ModelState.IsValid)
+            {
+                var response = await _httpClient.GetAsync("https://localhost:7252/api/User/Users/" + model.Username);
+                if (!response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        ModelState.AddModelError("Loi", "Tài khoản không tồn tại");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Loi", "Lỗi hệ thống. Vui lòng thử lại sau.");
+                    }
+                    return View(model);
+                }
+                var data = await response.Content.ReadAsStringAsync();
+                var user = JsonConvert.DeserializeObject<User>(data);
+                if (user == null)
+                {
+                    ModelState.AddModelError("Loi", "Tài Khoản không tồn tại");
+                }
+                else
+                {
+                    if (user.Password != model.Password)
+                    {
+                        ModelState.AddModelError("Loi", "Sai mat khau");
+                    }
+                    else
+                    {
+                        /*HttpContext.Session.SetString("Login", user.Username);*/
+                        TempData["Login"] = user.Username;
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+
+            }
+            else
+            {
+                _logger.LogError("Loi con cax");
+            }
             return View();
         }
 
-        [HttpPost]
-        public IActionResult DangNhap(RegisterVM model)
+        public async Task<IActionResult> LogOut()
         {
-            // lam tiep o day .......
-            var user = new User {
-                
-            };
 
-            return View();
+            TempData["Login"] = null;
+            return RedirectToAction("SignIn", "User");
         }
     }
 }

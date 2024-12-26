@@ -4,14 +4,14 @@ namespace PTPMDV_Website.Helper
 {
     public class MyUtil
     {
-        public static string GenerateRandomKey(int length = 5)
+        public static string GenarateRandomKey(int length = 25)
         {
-            var pattern = @"qwertyuiopasdfghjklzxcvbnm123456789POIUYTREQASDFGHJKLMNBVCXZ!@#$";
+            var partern = @"1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPLKJHGFDAZXCVBNM";
             var sb = new StringBuilder();
             var rd = new Random();
             for (int i = 0; i < length; i++)
             {
-                sb.Append(pattern[rd.Next(0,pattern.Length)]);
+                sb.Append(partern[rd.Next(0, partern.Length)]);
             }
             return sb.ToString();
         }
